@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
-import {TableItem} from '../TableArea'
+import { TableItem } from '../TableArea';
 
 interface InfoAreaProps {
   items: TableItem[];
@@ -28,18 +28,28 @@ export const InfoArea: React.FC<InfoAreaProps> = ({ items }) => {
   const [anoSelecionado, setAnoSelecionado] = useState(anoAtual);
   const [receitas, setReceitas] = useState(0);
   const [despesas, setDespesas] = useState(0);
+  const [itemsFiltrados, setItemsFiltrados] = useState(items);
 
   useEffect(() => {
-    const receitasTotal = items
+    const receitasTotal = itemsFiltrados
       .filter(item => item.category === 'Entrada')
       .reduce((total, item) => total + item.value, 0);
-    const despesasTotal = items
+    const despesasTotal = itemsFiltrados
       .filter(item => item.category === 'Saída')
       .reduce((total, item) => total + item.value, 0);
 
     setReceitas(receitasTotal);
     setDespesas(despesasTotal);
-  }, [items]);
+  }, [itemsFiltrados]);
+
+  useEffect(() => {
+    const filteredItems = items.filter(
+      item =>
+        new Date(item.date).getMonth() === meses.indexOf(mesSelecionado) &&
+        new Date(item.date).getFullYear() === anoSelecionado
+    );
+    setItemsFiltrados(filteredItems);
+  }, [items, mesSelecionado, anoSelecionado]);
 
   const selecionarMesAnterior = () => {
     const mesAtualIndex = meses.indexOf(mesSelecionado);
