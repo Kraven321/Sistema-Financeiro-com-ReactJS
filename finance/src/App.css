@@ -4,15 +4,29 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     box-sizing: border-box;
   }
+  body{
+    height: 100vh;
+    width: 100vw;
+  }
   header{ 
     height: 170px;
     background-color: darkblue;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: -20px;
+    margin-bottom: 8px;
   }
+
   h1{ 
     font-size: 36px;
     margin-bottom: 1.5rem;
     color: white;
   }
+  .subtitle{
+    color: white;
+    margin-top: -20px;
+    
+  }
+ 

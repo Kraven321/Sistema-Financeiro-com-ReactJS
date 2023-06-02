@@ -13,8 +13,14 @@
 }
 .mes-selecionado{ 
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
 }
 button{ 
     cursor: pointer;
+}
+.title-dinamo{
+    font-size: 15px;
+    width: 150px;
 }
